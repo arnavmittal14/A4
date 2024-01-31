@@ -8,7 +8,7 @@ body, h1, h2, h3, p, ul, li {
 
 /* Set a background color for the entire page */
 body {
-    background-image: url('background.jpg'); /* Add the path to your image file */
+    background-image: url('/Users/Arnav/Downloads/IMG_0637.jpg'); /* Add the path to your image file */
     background-size: cover; /* Ensures the image covers the entire background */
     background-position: center; /* Center the background image */
     font-family: Arial, sans-serif; /* Choose a suitable font */
