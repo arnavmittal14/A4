@@ -1,0 +1,50 @@
+/* styles.css */
+
+/* Reset some default styles to ensure consistent rendering across different browsers */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the entire page */
+body {
+    background-image: url('background.jpg'); /* Add the path to your image file */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Center the background image */
+    font-family: Arial, sans-serif; /* Choose a suitable font */
+}
+
+/* Style the header */
+h1 {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style the main content area */
+main {
+    padding: 20px;
+}
+
+/* Style the about-us section */
+.about-us {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Style paragraphs */
+p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Style footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
