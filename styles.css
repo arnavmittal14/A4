@@ -1,17 +1,17 @@
 /* styles.css */
 
-/* Apply a box-sizing border-box model to all elements */
+
 * {
     box-sizing: border-box;
 }
 
-/* Reset some default styles to ensure consistent rendering across different browsers */
+
 body, h1, h2, h3, p, ul, li, figure, figcaption {
     margin: 0;
     padding: 0;
 }
 
-/* Set a background image for the entire page */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -36,7 +36,7 @@ nav a {
     color: #fff;
     text-decoration: none;
     padding: 1em;
-    margin: 0 0.5em;
+    margin: 0 5em;
 }
 
 section {
@@ -50,3 +50,8 @@ footer {
     text-align: center;
 }
 
+nav a:hover {
+    color: #007bff;
+  }
+
+  
