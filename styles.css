@@ -6,7 +6,15 @@
 }
 
 
-body, h1, h2, h3, p, ul, li, figure, figcaption {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+figure,
+figcaption {
     margin: 0;
     padding: 0;
 }
@@ -52,6 +60,32 @@ footer {
 
 nav a:hover {
     color: #007bff;
-  }
+}
 
-  
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #555;
+}
+
+.arnav-content {
+    text: #fff;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background-image: url('/Users/Arnav/Downloads/wallpaperflare.com_wallpaper (1).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
