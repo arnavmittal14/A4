@@ -85,7 +85,12 @@ nav a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
-    background-image: url('/Users/Arnav/Downloads/wallpaperflare.com_wallpaper (1).jpg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.arnav-content img {
+    float: right; /* Float the image to the right */
+    width: 30%; /* Set the width of the image */
+    margin-left: 20px; /* Add some space between the image and text */
 }
