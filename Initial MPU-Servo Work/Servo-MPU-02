@@ -41,7 +41,7 @@ void loop() {
   // int16_t gx, gy, gz;
 
   int16_t ax = mpu.getAccelerationX(); // Read accelerometer value along X-axis
-  int mappedValue = map(ax, -17000, 17000, 0, 180); // Map accelerometer value to servo angle (adjust min and max values as needed)
+  int mappedValue = map(ax, -17500, 17500, 0, 180); // Map accelerometer value to servo angle (adjust min and max values as needed)
   myservo.write(mappedValue); // Set servo position
   delay(1); // Optional delay to control update rate
 
