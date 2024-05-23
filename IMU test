@@ -1,0 +1,39 @@
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+void setup() {
+  Serial.begin(9600);
+  
+  // Initialize MPU6050
+  Wire.begin();
+  mpu.initialize();
+
+  // Check if MPU6050 is connected
+  if (mpu.testConnection()) {
+    Serial.println("MPU6050 connection successful");
+  } else {
+    Serial.println("MPU6050 connection failed");
+    while (1);
+  }
+}
+
+void loop() {
+  // Read accelerometer and gyroscope values
+  int16_t ax, ay, az;
+  int16_t gx, gy, gz;
+
+  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+
+  // Print the values
+  Serial.print("aX = "); Serial.print(ax);
+  Serial.print(" | aY = "); Serial.print(ay);
+  Serial.print(" | aZ = "); Serial.print(az);
+  Serial.print(" | gX = "); Serial.print(gx);
+  Serial.print(" | gY = "); Serial.print(gy);
+  Serial.print(" | gZ = "); Serial.println(gz);
+
+  // Wait for 1 second
+  delay(2000);
+}
