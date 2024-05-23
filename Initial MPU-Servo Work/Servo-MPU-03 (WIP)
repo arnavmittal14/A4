@@ -1,0 +1,48 @@
+#include <Wire.h>
+#include <MPU6050.h>
+#include <ESP32Servo.h>
+
+MPU6050 mpu;
+
+Servo myservoX;  // create servo object to control X-axis servo
+Servo myservoY;  // create servo object to control Y-axis servo
+
+int servoPinX = 13;  // define the pin where the X-axis servo is connected
+int servoPinY = 12; // define the pin where the Y-axis servo is connected
+
+void setup() {
+  Serial.begin(9600);
+
+  // Initialize MPU6050
+  Wire.begin();
+  mpu.initialize();
+
+  // Check if MPU6050 is connected
+  if (mpu.testConnection()) {
+    Serial.println("MPU6050 connection successful");
+  } else {
+    Serial.println("MPU6050 connection failed");
+    while (1);
+  }
+
+  // Attach servos to pins
+  myservoX.attach(servoPinX);  // attaches the X-axis servo to the servo object
+  myservoY.attach(servoPinY);  // attaches the Y-axis servo to the servo object
+}
+
+void loop() {
+  // Read accelerometer values
+  int16_t ax = mpu.getAccelerationX(); // Read accelerometer value along X-axis
+  int16_t ay = mpu.getAccelerationY(); // Read accelerometer value along Y-axis
+
+  // Map accelerometer values to servo angles
+  int mappedValue_inX = map(ax, -17500, 17500, 0, 180); // Map accelerometer X value to servo angle (adjust min and max values as needed)
+  int mappedValue_inY = map(ay, -17500, 17500, 0, 180); // Map accelerometer Y value to servo angle (adjust min and max values as needed)
+
+  // Set servo positions for X and Y axes
+  myservoX.write(mappedValue_inX);
+  myservoY.write(mappedValue_inY);
+
+  delay(100); // Optional delay to control update rate
+}
+p
