@@ -1,0 +1,15 @@
+(For Single Servo)
+
+MPU --> ESP32 connection layout 
+
+VCC and GND --> 3V3 and GND
+
+SCL --> P22
+
+SDA --> P21
+___________________________________________________________
+ESP32 --> Servo 
+
+VCC and GND --> 5V and GND
+
+P13 --> PWM
