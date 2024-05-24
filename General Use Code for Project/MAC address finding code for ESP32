@@ -1,1 +1,25 @@
+#include <WiFi.h>
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000); // Delay to allow the serial monitor to initialize
+  
+  // Initialize WiFi
+  WiFi.mode(WIFI_STA);
+  WiFi.begin("Pionki", "6d6vqnsnx7");
+  
+  // Wait for WiFi connection
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.println("Connecting to WiFi...");
+  }
+  
+  // Print MAC address
+  Serial.print("MAC address: ");
+  Serial.println(WiFi.macAddress());
+}
+
+void loop() {
+  // Your code here
+}
 
