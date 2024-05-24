@@ -6,7 +6,7 @@ void setup() {
   
   // Initialize WiFi
   WiFi.mode(WIFI_STA);
-  WiFi.begin("Pionki", "6d6vqnsnx7");
+  WiFi.begin("SSID", "Password");
   
   // Wait for WiFi connection
   while (WiFi.status() != WL_CONNECTED) {
