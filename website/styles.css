@@ -79,7 +79,7 @@ nav a:hover {
     background-color: #555;
 }
 
-.arnav-content {
+.profile-content {
     text: #fff;
     padding: 0 18px;
     max-height: 0;
@@ -89,7 +89,7 @@ nav a:hover {
     background-repeat: no-repeat;
 }
 
-.arnav-content img {
+.profile-content img {
     float: right; /* Float the image to the right */
     width: 30%; /* Set the width of the image */
     margin-left: 20px; /* Add some space between the image and text */
