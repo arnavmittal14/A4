@@ -1,0 +1,27 @@
+MPU --> ESP32 connection layout 
+
+VCC and GND --> 3V3 and GND
+
+SCL --> P22
+
+SDA --> P21
+
+---------------------------------
+(For ServoX)
+
+
+ESP32 --> Servo 
+
+VCC and GND --> 5V and GND
+
+P13 --> PWM
+
+__________________________________
+
+(For ServoY)
+
+ESP32 --> Servo 
+
+VCC and GND --> 5V and GND
+
+P14 --> PWM

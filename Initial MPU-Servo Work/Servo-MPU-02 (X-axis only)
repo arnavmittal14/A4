@@ -1,0 +1,79 @@
+#include <Wire.h>
+#include <MPU6050.h>
+#include <ESP32Servo.h>
+
+
+MPU6050 mpu;
+
+
+Servo myservo;  // create servo object to control a servo
+
+
+int servoPin = 13;  // define the pin where the servo is connected
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+ 
+  // Initialize MPU6050
+  Wire.begin();
+  mpu.initialize();
+
+
+  // Check if MPU6050 is connected
+  if (mpu.testConnection()) {
+    Serial.println("MPU6050 connection successful");
+  } else {
+    Serial.println("MPU6050 connection failed");
+    while (1);
+  }
+
+
+  myservo.attach(servoPin);  // attaches the servo on pin 13 to the servo object
+}
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  // Read accelerometer and gyroscope values
+  // int16_t ax, ay, az;
+  // int16_t gx, gy, gz;
+
+  int16_t ax = mpu.getAccelerationX(); // Read accelerometer value along X-axis
+  int mappedValue = map(ax, -17500, 17500, 0, 180); // Map accelerometer value to servo angle (adjust min and max values as needed)
+  myservo.write(mappedValue); // Set servo position
+  delay(0.1); // Optional delay to control update rate
+
+
+  //mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+
+  //myservo.write(ax);
+
+  //delay(1);
+
+
+}
+
+/*
+#include <Wire.h>
+#include <ESP32Servo.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+Servo servoMotor;
+
+void setup() {
+  Wire.begin();
+  Serial.begin(9600);
+  mpu.initialize();
+  servoMotor.attach(9); // Attach servo to pin 9
+}
+
+void loop() {
+  int16_t accelerometerValue = mpu.getAccelerationY(); // Read accelerometer value along Y-axis
+  int mappedValue = map(accelerometerValue, -18000, 18000, 0, 180); // Map accelerometer value to servo angle (adjust min and max values as needed)
+  servoMotor.write(mappedValue); // Set servo position
+  delay(100); // Optional delay to control update rate
+}
+*/
