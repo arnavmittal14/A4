@@ -1,1 +1,71 @@
+const int LDRPin = A1; // Pin where LDR is connected
+const int LEDPin = 13; // Pin where LED is connected
+const int threshold = 500; // Adjust this value according to your lighting conditions
+
+const int redPin = 9;
+const int greenPin = 10;
+const int bluePin = 11;
+const int batteryPin = A0;
+
+const float R1 = 10000; // 10k ohms
+const float R2 = 10000; // 10k ohms
+
+void setup() {
+  pinMode(LEDPin, OUTPUT); // Set LED pin as output
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  Serial.begin(9600); // Initialize serial communication
+}
+
+void loop() {
+  // LDR functionality
+  int LDRValue = analogRead(LDRPin); // Read the value from the LDR
+  Serial.print("LDR Value: ");
+  Serial.println(LDRValue); // Print the LDR value for debugging
+
+  if (LDRValue < threshold) {
+    // It's dark
+    digitalWrite(LEDPin, HIGH); // Turn on the LED
+  } else {
+    // It's bright
+    digitalWrite(LEDPin, LOW); // Turn off the LED
+  }
+  
+  // Battery voltage functionality
+  int sensorValue = analogRead(batteryPin);
+  
+  // Convert the analog reading (0 - 1023) to a voltage (0 - 5V)
+  float batteryVoltage = sensorValue * (5.0 / 1023.0);
+  
+  // Calculate the actual battery voltage (considering the voltage divider)
+  float actualVoltage = batteryVoltage * ((R1 + R2) / R2);
+  
+  // Map the voltage to a percentage (adjust based on your battery specs)
+  int batteryPercentage = map(actualVoltage, 6.0, 9.0, 0, 100); // Example for 9V battery
+  
+  // Constrain the percentage to be between 0 and 100
+  batteryPercentage = constrain(batteryPercentage, 0, 100);
+  
+  // Print the battery percentage to the Serial Monitor
+  Serial.print("Battery Percentage: ");
+  Serial.println(batteryPercentage);
+  
+  // Set the RGB LED color based on the battery percentage
+  if (batteryPercentage >= 75) {
+    setColor(0, 255, 0); // Green
+  } else if (batteryPercentage >= 40) {
+    setColor(255, 255, 0); // Yellow
+  } else {
+    setColor(255, 0, 0); // Red
+  }
+  
+  delay(1000); // Update every second
+}
+
+void setColor(int red, int green, int blue) {
+  analogWrite(redPin, red);
+  analogWrite(greenPin, green);
+  analogWrite(bluePin, blue);
+}
 
