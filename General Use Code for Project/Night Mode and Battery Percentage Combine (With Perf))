@@ -52,9 +52,9 @@ void loop() {
   Serial.println(batteryPercentage);
   
   // Set the RGB LED color based on the battery percentage
-  if (batteryPercentage >= 60) {
+  if (batteryPercentage >= 65) {
     setColor(0, 255, 0); // Green
-  } else if (batteryPercentage >= 30) {
+  } else if (batteryPercentage >= 40) {
     setColor(255, 255, 0); // Yellow
   } else {
     setColor(255, 0, 0); // Red
