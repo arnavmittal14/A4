@@ -1,4 +1,4 @@
-const int LDRPin = A0; // Pin where LDR is connected
+const int LDRPin = A1; // Pin where LDR is connected
 const int LEDPin = 13; // Pin where LED is connected
 const int threshold = 500; // Adjust this value according to your lighting conditions
 
