@@ -1,0 +1,41 @@
+#include <WiFi.h>
+const char *ssid = "Pionki"; // Replace with your network SSID 
+const char *password = "6d6vqnsnx7"; // Replace with your network p
+
+WiFiServer server(80);
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.println("Connecting to WiFi...");
+  }
+
+  Serial.println("Connected to WiFi");
+  Serial.print("ESP32 IP Address: ");
+  Serial.println(WiFi.localIP());  // This line prints the IP address to the Serial Monitor
+  server.begin();
+}
+
+void loop() {
+  WiFiClient client = server.available();
+
+  if (client) {
+    Serial.println("Client connected");
+
+    while (client.connected()) {
+      if (client.available()) {
+        String data = client.readStringUntil('\n');
+        Serial.println("Received: " + data);
+
+        client.print("Message received: ");
+        client.println(data);
+      }
+    }
+
+    client.stop();
+    Serial.println("Client disconnected");
+  }
+}
